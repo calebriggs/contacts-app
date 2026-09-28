@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacts</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%236699f5'/><path d='M16 8v16M8 16h16' stroke='white' stroke-width='3' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" aria-label="Contact list">
+      <header class="sidebar-header">
+        <h1>Contacts</h1>
+        <button type="button" class="round-btn round-btn-lg" id="new-contact" title="New contact (N)" aria-label="New contact">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>
+        </button>
+      </header>
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
+        <input type="search" id="search" placeholder="Search" aria-label="Search contacts" autocomplete="off" spellcheck="false">
+        <kbd class="search-hint" aria-hidden="true">/</kbd>
+      </div>
+      <nav class="contact-list" id="contact-list" aria-live="polite"></nav>
+      <footer class="sidebar-footer" id="contact-count"></footer>
+    </aside>
+
+    <main class="detail" id="detail">
+      <div class="empty-state" id="empty-state">
+        <p class="empty-title">No contact selected</p>
+        <p class="empty-text">Choose someone from the list, or add a new contact.</p>
+        <button type="button" class="btn btn-primary" id="empty-new">New contact</button>
+      </div>
+
+      <form class="contact-form" id="contact-form" novalidate hidden>
+        <div class="form-toolbar">
+          <button type="button" class="back-btn" id="back">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Contacts
+          </button>
+          <span class="form-heading" id="form-heading"></span>
+          <div class="toolbar-actions">
+            <button type="button" class="tool-btn" id="favorite" aria-pressed="false" title="Favorite">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+              <span>Favorite</span>
+            </button>
+            <a class="tool-btn" id="vcard" download title="Download as a vCard (.vcf) to import into a phone or mail app">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14"/></svg>
+              <span>vCard</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="form-body">
+          <div class="row">
+            <div class="field">
+              <label for="first_name">First Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="first_name" name="first_name" maxlength="100" autocomplete="off" required aria-describedby="first_name-error">
+              <p class="error" id="first_name-error" data-error-for="first_name"></p>
+            </div>
+            <div class="field">
+              <label for="last_name">Last Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="last_name" name="last_name" maxlength="100" autocomplete="off" required aria-describedby="last_name-error">
+              <p class="error" id="last_name-error" data-error-for="last_name"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="label" id="email-label">Email</span>
+            <ul class="email-list" id="email-list" aria-labelledby="email-label"></ul>
+            <div class="new-email" id="new-email-row" hidden>
+              <input type="email" id="new-email" placeholder="name@example.com" maxlength="254" autocomplete="off" spellcheck="false" aria-label="New email address" aria-describedby="emails-error">
+              <button type="button" class="btn btn-small btn-primary" id="confirm-email">Add</button>
+            </div>
+            <button type="button" class="add-email" id="add-email">
+              <span class="round-btn round-btn-sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 7v10M7 12h10"/></svg></span>
+              <span class="add-email-text">add email</span>
+            </button>
+            <p class="error" id="emails-error" data-error-for="emails"></p>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" maxlength="40" autocomplete="off" aria-describedby="phone-error">
+              <p class="error" id="phone-error" data-error-for="phone"></p>
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input id="company" name="company" maxlength="100" autocomplete="off" aria-describedby="company-error">
+              <p class="error" id="company-error" data-error-for="company"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="3" maxlength="2000" aria-describedby="notes-error"></textarea>
+            <p class="error" id="notes-error" data-error-for="notes"></p>
+          </div>
+
+          <p class="meta" id="meta"></p>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-danger" id="delete">Delete</button>
+          <span class="dirty-hint" id="dirty-hint" hidden>Unsaved changes</span>
+          <button type="button" class="btn btn-secondary" id="cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="save" title="Save (Ctrl/⌘ + S)">Save</button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal" hidden>
+    <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
+      <h2 id="modal-title"></h2>
+      <p id="modal-body"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="modal-cancel"></button>
+        <button type="button" class="btn" id="modal-confirm"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+</body>
+</html>
