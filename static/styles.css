@@ -181,9 +181,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 }
 .remove-email svg { stroke-width: 2.6; }
 .remove-email:hover { background: var(--red-dark); }
-/* Figma note: show delete button on hover. Also show it for keyboard users. */
-.email-item:hover .remove-email, .email-item:focus-within .remove-email, .remove-email:focus-visible { opacity: 1; }
-.remove-email:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(238, 100, 97, 0.35); }
+/* Figma note: show delete button on hover. */
+.email-item:hover .remove-email { opacity: 1; }
 /* Since touch screens have no hover, keep the button visible there. */
 @media (hover: none) { .remove-email { opacity: 1; } }
 
