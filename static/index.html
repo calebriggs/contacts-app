@@ -13,19 +13,19 @@
 </head>
 <body>
   <div class="app" id="app">
-    <aside class="sidebar" aria-label="Contact list">
+    <aside class="sidebar">
       <header class="sidebar-header">
         <h1>Contacts</h1>
-        <button type="button" class="round-btn round-btn-lg" id="new-contact" title="New contact (N)" aria-label="New contact">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>
+        <button type="button" class="round-btn round-btn-lg" id="new-contact" title="New contact (N)">
+          <svg viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></svg>
         </button>
       </header>
       <div class="search">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
-        <input type="search" id="search" placeholder="Search" aria-label="Search contacts" autocomplete="off" spellcheck="false">
-        <kbd class="search-hint" aria-hidden="true">/</kbd>
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>
+        <input type="search" id="search" placeholder="Search" autocomplete="off" spellcheck="false">
+        <kbd class="search-hint">/</kbd>
       </div>
-      <nav class="contact-list" id="contact-list" aria-live="polite"></nav>
+      <nav class="contact-list" id="contact-list"></nav>
       <footer class="sidebar-footer" id="contact-count"></footer>
     </aside>
 
@@ -39,16 +39,16 @@
       <form class="contact-form" id="contact-form" novalidate hidden>
         <div class="form-toolbar">
           <button type="button" class="back-btn" id="back">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Contacts
+            <svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>Contacts
           </button>
           <span class="form-heading" id="form-heading"></span>
           <div class="toolbar-actions">
-            <button type="button" class="tool-btn" id="favorite" aria-pressed="false" title="Favorite">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+            <button type="button" class="tool-btn" id="favorite" title="Favorite">
+              <svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
               <span>Favorite</span>
             </button>
             <a class="tool-btn" id="vcard" download title="Download as a vCard (.vcf) to import into a phone or mail app">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14"/></svg>
               <span>vCard</span>
             </a>
           </div>
@@ -57,26 +57,26 @@
         <div class="form-body">
           <div class="row">
             <div class="field">
-              <label for="first_name">First Name <span class="req" aria-hidden="true">*</span></label>
-              <input id="first_name" name="first_name" maxlength="100" autocomplete="off" required aria-describedby="first_name-error">
+              <label for="first_name">First Name <span class="req">*</span></label>
+              <input id="first_name" name="first_name" maxlength="100" autocomplete="off" required>
               <p class="error" id="first_name-error" data-error-for="first_name"></p>
             </div>
             <div class="field">
-              <label for="last_name">Last Name <span class="req" aria-hidden="true">*</span></label>
-              <input id="last_name" name="last_name" maxlength="100" autocomplete="off" required aria-describedby="last_name-error">
+              <label for="last_name">Last Name <span class="req">*</span></label>
+              <input id="last_name" name="last_name" maxlength="100" autocomplete="off" required>
               <p class="error" id="last_name-error" data-error-for="last_name"></p>
             </div>
           </div>
 
           <div class="field">
             <span class="label" id="email-label">Email</span>
-            <ul class="email-list" id="email-list" aria-labelledby="email-label"></ul>
+            <ul class="email-list" id="email-list"></ul>
             <div class="new-email" id="new-email-row" hidden>
-              <input type="email" id="new-email" placeholder="name@example.com" maxlength="254" autocomplete="off" spellcheck="false" aria-label="New email address" aria-describedby="emails-error">
+              <input type="email" id="new-email" placeholder="name@example.com" maxlength="254" autocomplete="off" spellcheck="false">
               <button type="button" class="btn btn-small btn-primary" id="confirm-email">Add</button>
             </div>
             <button type="button" class="add-email" id="add-email">
-              <span class="round-btn round-btn-sm" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 7v10M7 12h10"/></svg></span>
+              <span class="round-btn round-btn-sm"><svg viewBox="0 0 24 24"><path d="M12 7v10M7 12h10"/></svg></span>
               <span class="add-email-text">add email</span>
             </button>
             <p class="error" id="emails-error" data-error-for="emails"></p>
@@ -85,19 +85,19 @@
           <div class="row">
             <div class="field">
               <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" maxlength="40" autocomplete="off" aria-describedby="phone-error">
+              <input id="phone" name="phone" type="tel" maxlength="40" autocomplete="off">
               <p class="error" id="phone-error" data-error-for="phone"></p>
             </div>
             <div class="field">
               <label for="company">Company</label>
-              <input id="company" name="company" maxlength="100" autocomplete="off" aria-describedby="company-error">
+              <input id="company" name="company" maxlength="100" autocomplete="off">
               <p class="error" id="company-error" data-error-for="company"></p>
             </div>
           </div>
 
           <div class="field">
             <label for="notes">Notes</label>
-            <textarea id="notes" name="notes" rows="3" maxlength="2000" aria-describedby="notes-error"></textarea>
+            <textarea id="notes" name="notes" rows="3" maxlength="2000"></textarea>
             <p class="error" id="notes-error" data-error-for="notes"></p>
           </div>
 
@@ -115,7 +115,7 @@
   </div>
 
   <div class="modal-backdrop" id="modal" hidden>
-    <div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-body">
+    <div class="modal">
       <h2 id="modal-title"></h2>
       <p id="modal-body"></p>
       <div class="modal-actions">
@@ -125,6 +125,6 @@
     </div>
   </div>
 
-  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  <div class="toasts" id="toasts"></div>
 </body>
 </html>

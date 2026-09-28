@@ -112,10 +112,10 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .contact-link .star svg { fill: currentColor; }
 .contact-link:hover { background: var(--blue-soft); }
 .contact-link:focus-visible { outline: none; box-shadow: inset var(--focus); }
-.contact-link[aria-current="page"] { background: var(--blue); color: #fff; }
-.contact-link[aria-current="page"] .star { color: #fff; }
+.contact-link.is-selected { background: var(--blue); color: #fff; }
+.contact-link.is-selected .star { color: #fff; }
 .contact-link mark { background: #fff3b0; color: inherit; border-radius: 2px; }
-.contact-link[aria-current="page"] mark { background: rgba(255, 255, 255, 0.3); }
+.contact-link.is-selected mark { background: rgba(255, 255, 255, 0.3); }
 .list-empty { padding: 20px 18px; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .list-empty button { margin-top: 8px; }
 
@@ -138,8 +138,8 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 .tool-btn:hover { background: var(--input-bg); color: var(--text); }
 .tool-btn:focus-visible { outline: none; box-shadow: var(--focus); }
 .tool-btn svg { font-size: 16px; }
-#favorite[aria-pressed="true"] { color: #d99a00; }
-#favorite[aria-pressed="true"] svg { fill: #f5b301; stroke: #f5b301; }
+#favorite.is-on { color: #d99a00; }
+#favorite.is-on svg { fill: #f5b301; stroke: #f5b301; }
 .back-btn { display: none; }
 
 .form-body { flex: 1; overflow-y: auto; padding: 8px 28px 24px; }
@@ -158,7 +158,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 2
 }
 .field textarea { resize: vertical; min-height: 72px; font-size: 15px; line-height: 1.45; }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--blue); background: #fff; box-shadow: var(--focus); }
-.field input[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--red); background: #fff7f7; }
+.field input.invalid, .field textarea.invalid { border-color: var(--red); background: #fff7f7; }
 .error { margin: 4px 0 0; min-height: 0; font-size: 13px; color: var(--red-dark); }
 .error:empty { display: none; }
 
